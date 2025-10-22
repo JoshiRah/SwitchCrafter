@@ -23,11 +23,8 @@ tk.Label(root, text='').grid(row=7,column=0)
 tk.Label(root, text='').grid(row=13,column=0)
 tk.Label(root, text='').grid(row=15, column=0)
 tk.Label(root, text='').grid(row=17, column=0)
-#tk.Label(root, text='').grid(row=20, column=0)
-#tk.Label(root, text='').grid(row=23, column=0)
-#tk.Label(root, text='').grid(row=28,column=0)
-#tk.Label(root, text='').grid(row=0,column=0)
-
+tk.Label(root, text='').grid(row=19, column=0)
+tk.Label(root, text='').grid(row=21, column=0)
 
 # model
 tk.Label(root, text='Model:').grid(row=1, column=0)
@@ -126,6 +123,25 @@ tk.Label(root, text='Domain name:').grid(row=18, column=3)
 givenDomain = tk.Entry(root)
 givenDomain.grid(row=18, column=4)
 
+tk.Label(root, text='SNMP-Community:').grid(row=20, column=0)
+givenCommunity = tk.Entry(root)
+givenCommunity.grid(row=20,column=1)
+
+tk.Label(root, text='SNMP-Contact:').grid(row=20, column=3)
+givenContact = tk.Entry(root)
+givenContact.grid(row=20,column=4)
+
+tk.Label(root, text='SNMP-Location:').grid(row=20,column=6)
+givenLocation = tk.Entry(root)
+givenLocation.grid(row=20,column=7)
+
+tk.Label(root, text='Remote-Logging:').grid(row=22, column=0)
+givenSyslog = tk.Entry(root)
+givenSyslog.grid(row=22,column=1)
+
+tk.Label(root, text='NTP-Server:').grid(row=22, column=3)
+givenNtp = tk.Entry(root)
+givenNtp.grid(row=22, column=4)
 
 # place button
 #button = tk.Button(root, text="Save values", command=None)
