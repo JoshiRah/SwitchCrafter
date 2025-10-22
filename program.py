@@ -13,8 +13,8 @@ newSwitch = modules.Switch('dell', 48, 'SW01', 'admin','geheim',100,200,300,400,
 
 # main window
 root = tk.Tk()
-root.title('Switch configuration generator | J. Rahmlow (c) 2025')
-root.geometry('800x600')
+root.title('Switch configuration generator | JoshiRah (c) 2025')
+root.geometry('1200x800')
 
 # placeholder
 tk.Label(root, text='').grid(row=3,column=0)
@@ -25,6 +25,8 @@ tk.Label(root, text='').grid(row=15, column=0)
 tk.Label(root, text='').grid(row=17, column=0)
 tk.Label(root, text='').grid(row=19, column=0)
 tk.Label(root, text='').grid(row=21, column=0)
+tk.Label(root, text='').grid(row=23, column=0)
+tk.Label(root, text='').grid(row=24, column=0)
 
 # model
 tk.Label(root, text='Model:').grid(row=1, column=0)
@@ -144,8 +146,8 @@ givenNtp = tk.Entry(root)
 givenNtp.grid(row=22, column=4)
 
 # place button
-#button = tk.Button(root, text="Save values", command=None)
-#button.grid(row=5, column=1)
+button = tk.Button(root, text="Save values", command=None)
+button.grid(row=25, column=8)
 
 # start main loop
 root.mainloop()
