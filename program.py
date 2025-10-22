@@ -9,7 +9,9 @@ models = ['HP Enterprise Aruba 6000', 'Dell EMC N1500']
 version = ['12 Port', '24 Port', '48 Port']
 ifVids = ['1', '300', '400']
 
-newSwitch = modules.Switch('dell', 48, 'SW01', 'admin','geheim',100,200,300,400,900,'NET-DATA','NET-VOICE','NET-MGMT','NET-IOT','NET-GUESTS','300','1.1.1.1','255.255.255.0', '1.1.1.2', '1.2.3.4', 'rg-diakonie.de', 'public', 'noc@rg-diakonie.de', 'hier', 'syslog.rg-diakonie.de', 'ntp.rg-diakonie.de')
+def SaveUserInput():
+    switch = modules.Switch(givenModel.get(),givenVersion.get(),givenHostname.get(),givenUsername.get(),givenPassword.get(),givenVidData.get(),givenVidVoice.get(),givenVidMgmt.get(),givenVidIot.get(),givenVidGuests.get(),givenNameData.get(),givenNameVoice.get(),givenNameMgmt.get(),givenNameIot.get(),givenNameGuests.get(),givenIfVid.get(),givenIfIp.get(),givenNetMask.get(),givenGateway.get(),givenDNS.get(),givenDomain.get(),givenCommunity.get(),givenContact.get(),givenLocation.get(),givenSyslog.get(),givenNtp.get())
+    print(switch.CheckDataIntegrity())
 
 # main window
 root = tk.Tk()
@@ -146,7 +148,7 @@ givenNtp = tk.Entry(root)
 givenNtp.grid(row=22, column=4)
 
 # place button
-button = tk.Button(root, text="Save values", command=None)
+button = tk.Button(root, text="Save values", command=SaveUserInput)
 button.grid(row=25, column=8)
 
 # start main loop
