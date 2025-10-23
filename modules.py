@@ -1,9 +1,7 @@
 # error messages
 
-errorCode060 = 'No available parameter for this function'
-errorCode070 = 'Missing or wrong parameters'
-errorCode080 = 'Look at the mirror and you will see the problem'
-errorCode999 = 'Fatal error. Just burn your pc'
+errorCode060 = '>>> wrong or missing parameter for this method'
+errorCode999 = '>>> fatal error. Just burn your pc'
 
 # sets
 
