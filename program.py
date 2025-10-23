@@ -4,6 +4,19 @@ from tkinter import messagebox, Label, Frame
 from tkinter import ttk
 import os
 
+def SuccessWindow():
+    sucWindow = tk.Tk()
+    sucWindow.title('Configuration successful | Switch configuration generator')
+    sucWindow.geometry('500x300')
+    tk.Label(sucWindow, text='Configuration successful').grid(row=1,column=1)
+    sucWindow.mainloop()
+
+def ErrorWindow():
+    errorWindow = tk.Tk()
+    errorWindow.title('Missing data detected! | Switch configuration generator')
+    errorWindow.geometry('500x300')
+    tk.Label(errorWindow, text='Missing data detected. Please preview your data once again!').grid(row=1,column=1)
+    errorWindow.mainloop()
 
 def SaveUserInput():
     instance = modules.Switch(givenModel.get(),givenVersion.get(),givenHostname.get(),givenUsername.get(),givenPassword.get(),givenVidData.get(),givenVidVoice.get(),givenVidMgmt.get(),givenVidIot.get(),givenVidGuests.get(),givenNameData.get(),givenNameVoice.get(),givenNameMgmt.get(),givenNameIot.get(),givenNameGuests.get(),givenIfVid.get(),givenIfIp.get(),givenNetMask.get(),givenGateway.get(),givenDNS.get(),givenDomain.get(),givenCommunity.get(),givenContact.get(),givenLocation.get(),givenSyslog.get(),givenNtp.get())
@@ -22,12 +35,9 @@ def SaveUserInput():
                 output.write(instance.CreateUplinks())
                 output.write(instance.CreateAccess())
                 output.close()
+                SuccessWindow()
         else:
-            errorWindow = tk.Tk()
-            errorWindow.title('Missing data detected! | Switch configuration generator')
-            errorWindow.geometry('500x300')
-            tk.Label(errorWindow, text='Missing data detected. Please preview your data once again!').grid(row=1,column=1)
-            errorWindow.mainloop()
+            ErrorWindow()
 
     # new window with name popUp
     popUp = tk.Tk()
