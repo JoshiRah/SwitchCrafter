@@ -9,8 +9,7 @@ def SaveUserInput():
     instance = modules.Switch(givenModel.get(),givenVersion.get(),givenHostname.get(),givenUsername.get(),givenPassword.get(),givenVidData.get(),givenVidVoice.get(),givenVidMgmt.get(),givenVidIot.get(),givenVidGuests.get(),givenNameData.get(),givenNameVoice.get(),givenNameMgmt.get(),givenNameIot.get(),givenNameGuests.get(),givenIfVid.get(),givenIfIp.get(),givenNetMask.get(),givenGateway.get(),givenDNS.get(),givenDomain.get(),givenCommunity.get(),givenContact.get(),givenLocation.get(),givenSyslog.get(),givenNtp.get())
 
     def WriteConfiguration():
-        #if instance.CheckDataIntegrity() == True:
-        if 1 ==1:
+        if instance.CheckDataIntegrity() == True:
             with open('Export.txt', 'w', encoding='UTF-8') as output:
                 output.write(instance.BuildHostname())
                 output.write(instance.BuildLocalAdmin())
@@ -24,7 +23,11 @@ def SaveUserInput():
                 output.write(instance.CreateAccess())
                 output.close()
         else:
-            print('Daten unvollständig') # Open new window with error code 'missing data'
+            errorWindow = tk.Tk()
+            errorWindow.title('Missing data detected! | Switch configuration generator')
+            errorWindow.geometry('500x300')
+            tk.Label(errorWindow, text='Missing data detected. Please preview your data once again!').grid(row=1,column=1)
+            errorWindow.mainloop()
 
     # new window with name popUp
     popUp = tk.Tk()
