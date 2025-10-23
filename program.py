@@ -4,11 +4,27 @@ from tkinter import messagebox, Label, Frame
 from tkinter import ttk
 import os
 
-def WriteConfiguration():
-    print('Write to file')
 
 def SaveUserInput():
     instance = modules.Switch(givenModel.get(),givenVersion.get(),givenHostname.get(),givenUsername.get(),givenPassword.get(),givenVidData.get(),givenVidVoice.get(),givenVidMgmt.get(),givenVidIot.get(),givenVidGuests.get(),givenNameData.get(),givenNameVoice.get(),givenNameMgmt.get(),givenNameIot.get(),givenNameGuests.get(),givenIfVid.get(),givenIfIp.get(),givenNetMask.get(),givenGateway.get(),givenDNS.get(),givenDomain.get(),givenCommunity.get(),givenContact.get(),givenLocation.get(),givenSyslog.get(),givenNtp.get())
+
+    def WriteConfiguration():
+        #if instance.CheckDataIntegrity() == True:
+        if 1 ==1:
+            with open('Export.txt', 'w', encoding='UTF-8') as output:
+                output.write(instance.BuildHostname())
+                output.write(instance.BuildLocalAdmin())
+                output.write(instance.CreateVLAN())
+                output.write(instance.CreateInterface())
+                output.write(instance.CreateDNS())
+                output.write(instance.CreateSyslog())
+                output.write(instance.CreateSNMP())
+                output.write(instance.CreateNTP())
+                output.write(instance.CreateUplinks())
+                output.write(instance.CreateAccess())
+                output.close()
+        else:
+            print('Daten unvollständig') # Open new window with error code 'missing data'
 
     # new window with name popUp
     popUp = tk.Tk()

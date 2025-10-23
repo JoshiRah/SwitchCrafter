@@ -48,7 +48,7 @@ class Switch():
                 print(errorCode999)
 
     def BuildHostname(self):
-         validHostname = f'hostname {self.hostname}'
+         validHostname = f'hostname {self.hostname}\n'
          return validHostname
 
     def BuildLocalAdmin(self):
