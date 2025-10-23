@@ -54,10 +54,10 @@ class Switch():
          return validHostname
 
     def BuildLocalAdmin(self):
-        if self.model == 'hpe':
+        if self.model == models[0]:
             validUser = f'username {self.uname} password plaintext {self.passwd}\n'
             return validUser
-        elif self.model == 'dell':
+        elif self.model == models[1]:
             validUser = f'user {self.uname} password {self.passwd} privilege 15\n'
             return validUser
         else:
@@ -68,70 +68,70 @@ class Switch():
         return validVLAN
 
     def CreateInterface(self):
-        if self.model == 'hpe':
+        if self.model == models[0]:
             validInterface = f'interface vlan {self.vlan}\nip address {self.ip} {self.mask}\nexit\nip route 0.0.0.0/0 {self.gw}\n'
             return validInterface
-        if self.model == 'dell':
+        if self.model == models[1]:
             validInterface = f'interface vlan {self.vlan}\nip address {self.ip} {self.mask}\nexit\nip default-gateway {self.gw}\n'
             return validInterface
         else:
             return errorCode060
 
     def CreateDNS(self):
-        if self.model == 'hpe':
+        if self.model == models[0]:
             validDNS = f'ip dns server-address {self.dns}\nip dns domain-name {self.domain}\n'
             return validDNS
-        elif self.model == 'dell':
+        elif self.model == models[1]:
             validDNS = f'ip name-server {self.dns}\nip domain-name {self.domain}\n'
             return validDNS
         else:
             return errorCode060
 
     def CreateSyslog(self):
-        if self.model == 'hpe':
+        if self.model == models[0]:
             validLogging = f'logging {self.rs} severity info\n'
             return validLogging
-        elif self.model == 'dell':
+        elif self.model == models[1]:
             validLogging = f'logging {self.rs}\nlevel informational\nexit\n'
             return validLogging
         else:
             return errorCode060
 
     def CreateSNMP(self):
-        if self.model == 'hpe':
+        if self.model == models[0]:
             validSNMP = f'snmp-server vrf default\nsnmp-server community {self.comm}\nsnmp-server system-contact {self.cont}\nsnmp-server system-location {self.loc}\n'
             return validSNMP
-        elif self.model == 'dell':
+        elif self.model == models[1]:
             validSNMP = f'snmp-server community {self.comm}\nsnmp-server contact {self.cont}\nsnmp-server {self.loc}\n'
             return validSNMP
         else:
             return errorCode060
 
     def CreateNTP(self):
-        if self.model == 'hpe':
+        if self.model == models[0]:
             validNTP = f'ntp server {self.ntp}\nclock timezone europe/berlin\n'
             return validNTP
-        elif self.model == 'dell':
+        elif self.model == models[1]:
             validNTP = f'sntp server {self.ntp}\nclock timezone +2\n'
             return validNTP
         else:
             return 'modell fehlt'
 
     def CreateUplinks(self):
-        if self.model == 'hpe' and self.ports == 12:
+        if self.model == models[0] and self.ports == version[0]:
             validUplinks = f'interface 1/1/13-1/1/16\nvlan trunk allowed all\nvlan trunk native 1\ndescription Network\nspanning-tree port-type admin-network\nno shutdown\nexit\n' # Set interfaces 13 - 16 into vlan trunk mode with native trunk on vlan 1, set the description to Network and port-type into network
             return validUplinks
-        elif self.model == 'hpe' and self.ports == 24:
+        elif self.model == models[0] and self.ports == version[1]:
             validUplinks = f'interface 1/1/23-1/1/28\nvlan trunk allowed all\nvlan trunk native 1\ndescription Network\nspanning-tree port-type admin-network\nno shutdown\nexit\n' # Set interfaces 23 - 28 into vlan trunk mode with native trunk on vlan 1, set the description to Network and port-type into network
             return validUplinks
-        elif self.model == 'hpe' and self.ports == 48:
+        elif self.model == models[0] and self.ports == version[2]:
             validUplinks = f'interface 1/1/47-1/1/52\nvlan trunk allowed all\nvlan trunk native 1\ndescription Network\nspanning-tree port-type admin-network\nno shutdown\nexit\n' # Set interfaces 47 - 52 into vlan trunk mode with native trunk on vlan 1, set the description to Network and port-type into network
             return validUplinks
-        elif self.model == 'dell' and self.ports == 24:
+        elif self.model == models[1] and self.ports == version[1]:
             validUplinks = (f'interface range gi1/0/23-24\nswitchport trunk allowed vlan all\nswitchport trunk native vlan 1\nswitchport mode trunk\ndescription Network\nno shutdown\nexit\n' # Set interfaces gi23 - gi24 into vlan trunk mode with native trunk on vlan 1, set the description to Network and spanning-tree into network
                             f'interface range te1/0/1-4\nswitchport trunk allowed vlan all\nswitchport trunk native vlan 1\nswitchport mode trunk\ndescription Network\nno shutdown\nexit\n') # Set interfaces te1 - te4 into vlan trunk mode with native trunk on vlan 1, set the description to Network and spanning tree into network
             return validUplinks
-        elif self.model == 'dell' and self.ports == 48:
+        elif self.model == models[1] and self.ports == version[2]:
             validUplinks = (f'interface range gi1/0/47-48\nswitchport trunk allowed vlan all\nswitchport trunk native vlan 1\nswitchport mode trunk\ndescription Network\nno shutdown\nexit\n' # Set interfaces gi23 - gi24 into vlan trunk mode with native trunk on vlan 1, set the description to Network and spanning-tree into network
                             f'interface range te1/0/1-4\nswitchport trunk allowed vlan all\nswitchport trunk native vlan 1\nswitchport mode trunk\ndescription Network\nno shutdown\nexit\n') # Set interfaces te1 - te4 into vlan trunk mode with native trunk on vlan 1, set the description to Network and spanning tree into network
             return validUplinks
