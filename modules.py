@@ -137,20 +137,20 @@ class Switch():
             return errorCode060
 
     def CreateAccess(self):
-        if self.model == 'hpe' and self.ports == 12:
+        if self.model == models[0] and self.ports == version[0]:
             validUplinks = f'interface 1/1/1-1/1/12\nvlan trunk allowed all\nvlan trunk native {self.vidDT}\ndescription Edge\nspanning-tree port-type admin-edge\nno shutdown\nexit\n' # Set interfaces 13 - 16 into vlan trunk mode with native trunk on vlan 100, set the description to Edge and port-type into edge
             return validUplinks
-        elif self.model == 'hpe' and self.ports == 24:
+        elif self.model == models[0] and self.ports == version[1]:
             validUplinks = f'interface 1/1/1-1/1/22\nvlan trunk allowed all\nvlan trunk native {self.vidDT}\ndescription Edge\nspanning-tree port-type admin-edge\nno shutdown\nexit\n' # Set interfaces 23 - 28 into vlan trunk mode with native trunk on vlan 100, set the description to Edge and port-type into edge
             return validUplinks
-        elif self.model == 'hpe' and self.ports == 48:
+        elif self.model == models[0] and self.ports == version[2]:
             validUplinks = f'interface 1/1/1-1/1/46\nvlan trunk allowed all\nvlan trunk native {self.vidDT}\ndescription Edge\nspanning-tree port-type admin-edge\nno shutdown\nexit\n' # Set interfaces 47 - 52 into vlan trunk mode with native trunk on vlan 100, set the description to Edge and port-type into edge
             return validUplinks
-        elif self.model == 'dell' and self.ports == 24:
+        elif self.model == models[1] and self.ports == version[1]:
             validUplinks = (f'interface range gi1/0/1-22\nswitchport general pvid {self.vidDT}\nswitchport allowed vlan add {self.vidDT} untagged\nswitchport general allowed vlan add 100-999 tagged\n'
                             f'switchport general allowed vlan remove 1\nswitchport mode general\ndescription Edge\nspanning-tree portfast bpdufilter default\nno shutdown\nexit\n') # Set interfaces gi1 - gi22 into vlan general mode with native trunk on vlan data, set the description to Network and spanning-tree into edge
             return validUplinks
-        elif self.model == 'dell' and self.ports == 48:
+        elif self.model == models[1] and self.ports == version[2]:
             validUplinks = (f'interface range gi1/0/1-46\nswitchport general pvid {self.vidDT}\nswitchport allowed vlan add {self.vidDT} untagged\nswitchport general allowed vlan add 100-999 tagged\n'
                             f'switchport general allowed vlan remove 1\nswitchport mode general\ndescription Edge\nspanning-tree portfast bpdufilter default\nno shutdown\nexit\n') # Set interfaces gi1 - gi22 into vlan general mode with native trunk on vlan data, set the description to Network and spanning-tree into edge
             return validUplinks
