@@ -5,6 +5,10 @@ errorCode070 = 'Missing or wrong parameters'
 errorCode080 = 'Look at the mirror and you will see the problem'
 errorCode999 = 'Fatal error. Just burn your pc'
 
+# sets
+
+models = ['HPE Aruba 6000 Series', 'Dell EMC N1500 Series']
+version = ['12 Port', '24 Port', '48 Port']
 
 # the one and only class
 
@@ -111,7 +115,7 @@ class Switch():
             validNTP = f'sntp server {self.ntp}\nclock timezone +2\n'
             return validNTP
         else:
-            return errorCode060
+            return 'modell fehlt'
 
     def CreateUplinks(self):
         if self.model == 'hpe' and self.ports == 12:

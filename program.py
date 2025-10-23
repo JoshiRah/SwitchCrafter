@@ -2,16 +2,10 @@ import modules
 import tkinter as tk
 from tkinter import messagebox, Label, Frame
 from tkinter import ttk
-
 import os
 
-models = ['HP Enterprise Aruba 6000', 'Dell EMC N1500']
-version = ['12 Port', '24 Port', '48 Port']
-ifVids = ['1', '300', '400']
-
 def SaveUserInput():
-    switch = modules.Switch(givenModel.get(),givenVersion.get(),givenHostname.get(),givenUsername.get(),givenPassword.get(),givenVidData.get(),givenVidVoice.get(),givenVidMgmt.get(),givenVidIot.get(),givenVidGuests.get(),givenNameData.get(),givenNameVoice.get(),givenNameMgmt.get(),givenNameIot.get(),givenNameGuests.get(),givenIfVid.get(),givenIfIp.get(),givenNetMask.get(),givenGateway.get(),givenDNS.get(),givenDomain.get(),givenCommunity.get(),givenContact.get(),givenLocation.get(),givenSyslog.get(),givenNtp.get())
-    print(switch.CheckDataIntegrity())
+    instance = modules.Switch(givenModel.get(),givenVersion.get(),givenHostname.get(),givenUsername.get(),givenPassword.get(),givenVidData.get(),givenVidVoice.get(),givenVidMgmt.get(),givenVidIot.get(),givenVidGuests.get(),givenNameData.get(),givenNameVoice.get(),givenNameMgmt.get(),givenNameIot.get(),givenNameGuests.get(),givenIfVid.get(),givenIfIp.get(),givenNetMask.get(),givenGateway.get(),givenDNS.get(),givenDomain.get(),givenCommunity.get(),givenContact.get(),givenLocation.get(),givenSyslog.get(),givenNtp.get())
 
 # main window
 root = tk.Tk()
@@ -32,13 +26,13 @@ tk.Label(root, text='').grid(row=24, column=0)
 
 # model
 tk.Label(root, text='Model:').grid(row=1, column=0)
-givenModel = ttk.Combobox(root, values=models)
+givenModel = ttk.Combobox(root, values=modules.models)
 givenModel.set('Select a model')
 givenModel.grid(row=1, column=1)
 
 # count of ports
 tk.Label(root, text='Version:').grid(row=2,column=0)
-givenVersion = ttk.Combobox(root, values=version)
+givenVersion = ttk.Combobox(root, values=modules.version)
 givenVersion.set('Select a version')
 givenVersion.grid(row=2, column=1)
 
