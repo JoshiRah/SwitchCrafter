@@ -1,6 +1,5 @@
 🛠️ Usage
 
-Build an .exe from the repo.
 Launch the GUI.
 Select the switch model (HPE Aruba or Dell EMC).
 Fill in the required configuration parameters.
