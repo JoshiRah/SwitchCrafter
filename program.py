@@ -1,8 +1,6 @@
 import modules
 import tkinter as tk
-from tkinter import messagebox, Label, Frame
 from tkinter import ttk
-import os
 
 def SuccessWindow():
     sucWindow = tk.Tk()
