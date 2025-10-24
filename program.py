@@ -4,14 +4,14 @@ from tkinter import ttk
 
 def SuccessWindow():
     sucWindow = tk.Tk()
-    sucWindow.title('Configuration successful | Switch configuration generator')
+    sucWindow.title('Configuration successful | SwitchCrafter')
     sucWindow.geometry('500x300')
     tk.Label(sucWindow, text='Configuration successful').grid(row=1,column=1)
     sucWindow.mainloop()
 
 def ErrorWindow():
     errorWindow = tk.Tk()
-    errorWindow.title('Missing data detected! | Switch configuration generator')
+    errorWindow.title('Missing data detected! | SwitchCrafter')
     errorWindow.geometry('500x300')
     tk.Label(errorWindow, text='Missing data detected. Please preview your data once again!').grid(row=1,column=1)
     errorWindow.mainloop()
@@ -39,7 +39,7 @@ def SaveUserInput():
 
     # new window with name popUp
     popUp = tk.Tk()
-    popUp.title('Preview Configuration | Switch configuration generator')
+    popUp.title('Preview Configuration | SwitchCrafter')
     popUp.geometry('1000x800')
 
     # fill out the window with preview content
@@ -112,7 +112,7 @@ def SaveUserInput():
 
 # main window
 root = tk.Tk()
-root.title('Switch configuration generator | JoshiRah (c) 2025')
+root.title('SwitchCrafter | JoshiRah (c) 2025')
 root.geometry('1200x800')
 
 # placeholder
