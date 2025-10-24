@@ -100,7 +100,7 @@ class Switch():
             validSNMP = f'snmp-server vrf default\nsnmp-server community {self.comm}\nsnmp-server system-contact {self.cont}\nsnmp-server system-location {self.loc}\n'
             return validSNMP
         elif self.model == models[1]:
-            validSNMP = f'snmp-server community {self.comm}\nsnmp-server contact {self.cont}\nsnmp-server {self.loc}\n'
+            validSNMP = f'snmp-server community {self.comm}\nsnmp-server contact {self.cont}\nsnmp-server location{self.loc}\n'
             return validSNMP
         else:
             return errorCode060
