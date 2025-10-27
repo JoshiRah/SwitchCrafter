@@ -1,7 +1,7 @@
 <h2 >🛠️ Usage </h2>
 
 Launch the GUI.
-Select the switch model (HPE Aruba or Dell EMC).
+Select the switch model (HPE Aruba AOS-CX or Dell EMC Networking OS).
 Fill in the required configuration parameters.
 Click Generate.
 The configuration file will be saved as a .txt file in the output directory.
