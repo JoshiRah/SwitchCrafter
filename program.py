@@ -21,7 +21,8 @@ def SaveUserInput():
 
     def WriteConfiguration():
         if instance.CheckDataIntegrity() == True:
-            with open('Export.txt', 'w', encoding='UTF-8') as output:
+            fileName = f'{instance.hostname}.txt'
+            with open(fileName, 'w', encoding='UTF-8') as output:
                 output.write(instance.BuildHostname())
                 output.write(instance.BuildLocalAdmin())
                 output.write(instance.CreateVLAN())
