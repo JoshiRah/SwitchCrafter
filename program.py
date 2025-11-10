@@ -32,6 +32,7 @@ def SaveUserInput():
                 output.write(instance.CreateNTP())
                 output.write(instance.CreateUplinks())
                 output.write(instance.CreateAccess())
+                output.write(instance.SaveConfiguration())
                 output.close()
                 SuccessWindow()
         else:

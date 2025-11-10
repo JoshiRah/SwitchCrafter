@@ -157,3 +157,12 @@ class Switch():
         else:
             return errorCode060
 
+    def SaveConfiguration(self):
+        if self.model == models[0]:
+            saveConfig = f'\ndo wr mem\n'
+            return saveConfig
+        elif self.model == models[1]:
+            saveConfig = f'\ndo write\ny\n'
+            return saveConfig
+        else:
+            return errorCode060
