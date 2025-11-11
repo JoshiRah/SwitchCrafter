@@ -157,6 +157,42 @@ class Switch():
         else:
             return errorCode060
 
+    def CreateLoginBanner(self):
+        if self.model == models[0]:
+            cliBanner = (f'banner motd ^\n'
+                        f'***************************\n'
+                        f'*                         *\n'
+                        f'* RHEINISCHE GESELLSCHAFT *\n'
+                        f'*   FUER DIAKONIE GGMBH   *\n'
+                        f'*                         *\n'
+                        f'***************************\n'
+                        f'\n'
+                        f'***************************\n'
+                        f'*      {self.hostname}      *\n'
+                        f'***************************\n'
+                        f'^\n')
+
+            return cliBanner
+
+        elif self.model == models[1]:
+            cliBanner = (f'banner login "\n'
+                         f'***************************\n'
+                         f'*                         *\n'
+                         f'* RHEINISCHE GESELLSCHAFT *\n'
+                         f'*   FUER DIAKONIE GGMBH   *\n'
+                         f'*                         *\n'
+                         f'***************************\n'
+                         f'\n'
+                         f'***************************\n'
+                         f'*      {self.hostname}      *\n'
+                         f'***************************\n'
+                         f'"\n')
+
+            return cliBanner
+
+        else:
+            return errorCode060
+
     def SaveConfiguration(self):
         if self.model == models[0]:
             saveConfig = f'\ndo wr mem\n'
