@@ -53,10 +53,10 @@ class Switch():
 
     def BuildLocalAdmin(self):
         if self.model == models[0]:
-            validUser = f'username {self.uname} password plaintext {self.passwd}\n'
+            validUser = f'user {self.uname} password plaintext {self.passwd}\n'
             return validUser
         elif self.model == models[1]:
-            validUser = f'user {self.uname} password {self.passwd} privilege 15\n'
+            validUser = f'username {self.uname} password {self.passwd} privilege 15\n'
             return validUser
         else:
             return errorCode060
